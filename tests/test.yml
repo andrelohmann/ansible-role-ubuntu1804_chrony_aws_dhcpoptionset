@@ -1,0 +1,24 @@
+---
+
+- hosts: localhost
+  become: true
+  become_method: sudo
+
+  pre_tasks:
+  - name: iinstall chrony
+    apt:
+      name: "{{ packages }}"
+      state: latest
+      dpkg_options: 'force-confnew,force-confdef'
+      autoclean: yes
+      autoremove: yes
+      update_cache: yes
+      cache_valid_time: 3600
+    vars:
+      packages:
+      - chrony
+
+  roles:
+  - ansible-role-ubuntu1804_chrony_aws_dhcpoptionset
+
+...

@@ -1,0 +1,11 @@
+---
+
+- name: copy chrony exit hook
+  copy:
+    dest: /etc/dhcp/dhclient-exit-hooks.d/chrony
+    src: chrony
+    owner: root
+    group: root
+    mode: '0644'
+
+...
